@@ -18,7 +18,12 @@ export default defineConfig({
     darkModeSwitchLabel: "Тема",
     returnToTopLabel: "Наверх",
 
-    sidebar: [],
+    sidebar: [
+      {
+        text: "Blog",
+        link: '/discogs'
+      },
+    ],
 
     outline: {
       label: "Содержание"
