@@ -20,8 +20,14 @@ export default defineConfig({
 
     sidebar: [
       {
-        text: "Blog",
-        link: '/discogs'
+        text: "Discogs Revisualized",
+        items: [
+          {
+            text: "Введение",
+            link: '/discogs/intro'
+          }
+        ]
+        
       },
     ],
 

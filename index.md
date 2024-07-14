@@ -17,8 +17,8 @@ hero:
   #     link: /api-examples
 
 features:
-  - title: "Blog"
-    details: ""
-    link: /discogs
+  - title: "Discogs Revisuialized"
+    details: "Серия статей про разработку приложения на Next.js 14"
+    link: /discogs/intro
     icon: ⚡️
 ---
