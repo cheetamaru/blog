@@ -19,6 +19,6 @@ hero:
 features:
   - title: "Discogs Revisuialized"
     details: "Серия статей про разработку приложения на Next.js 14"
-    link: /discogs/intro
+    link: /discogs/intro/
     icon: ⚡️
 ---

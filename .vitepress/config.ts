@@ -24,7 +24,7 @@ export default defineConfig({
         items: [
           {
             text: "Введение",
-            link: '/discogs/intro'
+            link: '/discogs/intro/'
           }
         ]
         
