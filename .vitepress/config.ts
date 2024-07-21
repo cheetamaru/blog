@@ -25,6 +25,10 @@ export default defineConfig({
           {
             text: "Введение",
             link: '/discogs/intro/'
+          },
+          {
+            text: "Функционал",
+            link: '/discogs/features/'
           }
         ]
         
