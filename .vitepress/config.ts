@@ -46,5 +46,15 @@ export default defineConfig({
     container: {
       tipLabel: " "
     }
+  },
+  locales: {
+    root: {
+      label: "Русский",
+      lang: "ru"
+    },
+    en: {
+      label: "English",
+      lang: "en",
+    }
   }
 })
