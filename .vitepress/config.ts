@@ -55,6 +55,24 @@ export default defineConfig({
     en: {
       label: "English",
       lang: "en",
+      themeConfig: {
+        sidebar: [
+          {
+            text: "Discogs Revisualized",
+            items: [
+              {
+                text: "Intro",
+                link: '/en/discogs/intro/'
+              },
+              {
+                text: "Features",
+                link: '/en/discogs/features/'
+              }
+            ]
+            
+          },
+        ]
+      }
     }
   }
 })
