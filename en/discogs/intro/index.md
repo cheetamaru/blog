@@ -1,58 +1,73 @@
-# ENG
+# Development Diary: Discogs Revisualized – Introduction
 
-Серия статей про разработку приложения на `Next.js 14`
+A Series on Building an App with `Next.js 14`
 
 ![cover](/discogs/intro/intro_cover.webp)
 
-## Идея создания приложения
+## The Idea Behind the Project
 
-Недавно я начал собирать коллекцию виниловых пластинок. После покупки проигрывателя и нескольких пластинок я задумался о каталогизации моей коллекции.
+Recently, I started building a collection of vinyl records. After purchasing a turntable and a few records, I found myself thinking about cataloging my growing collection.
 
-Мне хотелось бы пользоваться удобным приложением или сайтом, куда можно записывать уже купленные пластинки и создавать вишлист для будущих покупок, который также можно было бы пересылать друзьям.
+I envisioned a user-friendly app or website where I could log the records I already own and create a wishlist for future purchases — something that I could also share with friends.
 
-Такой сайт уже существовал — [Discogs.com](http://discogs.com/). У него активное сообщество и огромная база данных всех физических и цифровых музыкальных релизов. Там всё замечательно, однако дизайн сайта заметно устарел.
+A platform like this already exists: [Discogs.com](http://discogs.com/). It boasts an active community and a massive database of physical and digital music releases. While the site has excellent features, its design feels noticeably outdated.
 
-К счастью, у _Discogs_ есть [открытый API](https://www.discogs.com/developers), который позволяет воспроизвести почти весь функционал сайта при помощи `HTTP`-запросов. Узнав об этом, я решил создать собственное фронтенд-приложение для демонстрации коллекции и вишлиста виниловых пластинок — по сути обновить и улучшить дизайн сайта.
+Fortunately, Discogs provides an [open API](https://www.discogs.com/developers) that replicates nearly all the site's functionality through HTTP requests. Learning this, I decided to build my own frontend application to showcase vinyl collections and wantlists — essentially reimagining and modernizing the site's design.
 
-## Что вы узнаете из дневника
+## What to Expect from This Development Diary
 
-В этой серии статей я шаг за шагом разберу, как создать полноценное веб-приложение для работы с существующим `API`.
+In this series of articles, I’ll walk you through the process of creating a fully functional web application that interacts with an existing API.
 
-Буду использовать `Next.js 14`, и соответственно, `React`.
+I’ll be using `Next.js 14` along with `React` as the primary framework and library for development.
 
-::: danger Дисклеймер
-Хотя я и фронтенд-разработчик, но мой основной рабочий стек — это экосистема `Vue`. Пожалуйста, относитесь к моим статьям критически — возможно, я ненароком буду переносить паттерны `Vue` в мир `React`.
+::: danger Disclaimer
+While I’m a frontend developer, my primary experience lies within the `Vue` ecosystem. Keep this in mind as you read these articles — I may unintentionally carry over patterns and practices from `Vue` into the `React` world.
 
-Однако, думаю, что всё будет нормально и я не совершу серьёзных ошибок. Зато планирую отмечать отличия экосистемы `React` от экосистемы `Vue`. Будет интересно.
+That said, I’m confident that I won’t make any major mistakes. In fact, I plan to highlight the key differences between the `React` and `Vue` ecosystems throughout the series. It’s going to be an exciting learning journey!
 :::
 
-## Целевая аудитория
+## Target Audience
 
-Серия статей будет полезна для:
+This series of articles is designed to be helpful for:
 
-- **Новичков во фронтенде**: Если вы только начинаете свой путь в веб-разработке, эти статьи помогут вам понять основные концепции создания веб-приложений. Я буду детально описывать каждый шаг.
-- **Тех, кто хочет больше узнать о `Next.js`**: Если вы уже имеете опыт работы с другими фронтенд-фреймворками и хотите узнать больше о `Next.js 14`, эти статьи предоставят вам практическое руководство по использованию этой платформы. Вы увидите, как `Next.js` упрощает создание приложений с серверным рендерингом, статической генерацией и мощной маршрутизацией.
-- **Тех, кто хочет посмотреть на пример другого разработчика**: Если вам интересно увидеть, как другой разработчик подходит к решению задач, эти статьи предложат вам взгляд изнутри на процесс разработки, мои методы и подходы.
-- **Тех, кто хочет узнать очередную имплементацию DDD на фронтенде**: Domain-Driven Design (DDD) — это мощная методология для управления сложностью в больших приложениях. Эти статьи покажут вам практическую реализацию идей DDD в реальном проекте на фронтенде.
-- **Фронтенд-разработчиков, переходящих с других фреймворков**: Если вы опытный разработчик, работающий с другими фреймворками, такими как `Vue` и `Svelte`, и хотите узнать, как ваши навыки могут быть применены в `Next.js`, вы найдете полезные сравнения и адаптации, которые помогут вам освоиться.
-- **Тех, кто интересуется интеграцией сторонних API**: В этих статьях я буду использовать открытый _API Discogs_. Если вы хотите научиться интегрировать сторонние API в свои проекты, мой опыт может оказаться для вас особенно ценным.
+- **Frontend Beginners**: 
+If you’re just starting your journey in web development, these articles will guide you through the fundamental concepts of building web applications. I’ll explain each step in detail to ensure clarity.
+- **Developers Curious About `Next.js`**:
+For those with experience in other frontend frameworks who want to explore `Next.js 14`, this series will serve as a hands-on guide. You’ll see how `Next.js` simplifies app creation with features like server-side rendering, static generation, and a powerful routing system.
+- **Developers Interested in Another Developer's Approach**:
+If you’re curious about how someone else tackles development challenges, this series will provide insights into my methods and thought processes as I build the application.
+- **Those Interested in Domain-Driven Design (DDD) on the Frontend**:
+Domain-Driven Design (DDD) is a powerful methodology for managing complexity in large applications. These articles will demonstrate practical implementations of some DDD principles within the context of a real-world frontend project.
+- **Frontend Developers Transitioning from Other Frameworks**:
+Experienced developers using other frameworks like `Vue` or `Svelte` will find this series valuable for understanding how their existing skills can translate to `Next.js`. I’ll include comparisons and adaptations to help make the transition smoother.
+- **Developers Interested in API Integration**:
+Since this project relies on the open Discogs API, these articles will also serve as a practical resource for learning how to integrate third-party APIs into your own projects. My experiences and lessons learned might be especially valuable for those exploring API-driven development.
 
-## Необходимые знания
+## Prerequisites
 
-Для успешного понимания и применения материалов этой статьи вам понадобятся следующие базовые знания:
+To successfully understand and apply the material in this series, you’ll need the following foundational knowledge:
 
-- **Основы JavaScript**: Понимание базового синтаксиса JavaScript.
-- **Основы веб-разработки**: Знание `HTML` и `CSS` для создания и стилизации веб-страниц.
-- **Взаимодействие между фронтендом и бэкендом**: Понимание, как фронтенд (клиентская часть) взаимодействует с бэкендом (серверная часть) через API. Это включает в себя отправку и получение `HTTP`-запросов.
+- **JavaScript Basics**: A good grasp of JavaScript syntax and fundamental concepts is essential.
+- **Web Development Basics**: Familiarity with `HTML` and `CSS` for creating and styling web pages.
+- **Frontend-Backend Interaction**: An understanding of how the frontend (client side) communicates with the backend (server side) via APIs. This includes knowledge of sending and receiving `HTTP` requests, as well as the division of responsibilities between frontend and backend operations.
 
-## Почему Next.JS 14?
 
-- __Популярность и современность.__ `Next.js 14` — один из самых популярных современных фреймворков для разработки веб-приложений.
+## Why Next.js 14?
 
-- __Новый опыт.__ Я хочу получить практический опыт работы с Next.js 14. Изучение новых технологий и инструментов расширяет мои профессиональные навыки и позволяет оставаться в курсе последних тенденций в веб-разработке.
+- __Popularity and Modernity.__ `Next.js 14` is one of the most popular and cutting-edge frameworks for building web applications.
 
-- __Серверный рендеринг (SSR)__
+- __New Learning Experience.__ I want to gain hands-on experience with `Next.js 14` and `React` in general. Even if I continue working primarily with `Vue`, understanding how other frameworks and libraries work will significantly enhance my technical skills.
 
-- __Удобная маршрутизация.__ `Next.js` предлагает мощную и гибкую систему маршрутизации, которая упрощает создание и управление страницами в приложении. Это позволяет быстро и легко настраивать маршруты без необходимости ручной конфигурации.
+- __Server-Side Rendering (SSR).__ One of my goals is also to deepen my knowledge of SSR and compare its implementation in `Next.js` with `Nuxt.js`.
 
-- __Встроенная оптимизация изображений.__ `Next.js` включает встроенные инструменты для оптимизации изображений, что помогает улучшить производительность и снизить время загрузки страниц. Это особенно важно для веб-приложений с большим количеством медиа-контента.
+- __Convenient Routing.__ `Next.js` offers a powerful and flexible routing system that simplifies the creation and management of pages within an application — an essential feature for my project.
+
+- __Built-In Image Optimization.__ The built-in image optimization tools in `Next.js` help improve performance and reduce page load times, a valuable feature for modern web applications.
+
+- __Request Caching.__ The Discogs.com API has rate limits on the number of requests per minute. With `Next.js`’s caching capabilities, I can reduce the frequency of API calls, ensuring smoother operation and less strain on their servers.
+
+---
+
+Enjoy the Read!
+
+If you have any questions, feel free to ask them via `GitHub Issues`.
