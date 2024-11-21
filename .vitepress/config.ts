@@ -29,9 +29,12 @@ export default defineConfig({
           {
             text: "Функционал",
             link: '/discogs/features/'
+          },
+          {
+            text: "Обёртка над API",
+            link: '/discogs/api_wrapper/'
           }
         ]
-        
       },
     ],
 
@@ -54,6 +57,8 @@ export default defineConfig({
     },
     en: {
       label: "English",
+      title: "IT-blog | Cheetamaru",
+      description: "IT-blog | Cheetamaru",
       lang: "en",
       themeConfig: {
         sidebar: [
@@ -67,6 +72,10 @@ export default defineConfig({
               {
                 text: "Features",
                 link: '/en/discogs/features/'
+              },
+              {
+                text: "API Wrapper",
+                link: '/discogs/api_wrapper/'
               }
             ]
             
